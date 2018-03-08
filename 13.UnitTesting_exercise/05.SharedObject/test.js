@@ -1,4 +1,4 @@
-let sharedObject = require('../script').sharedObject;
+let sharedObject = require('./script').sharedObject;
 let expect = require('chai').expect;
 let $ = require('jquery');
 
