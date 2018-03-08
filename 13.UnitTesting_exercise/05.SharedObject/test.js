@@ -2,17 +2,16 @@ let jsdom = require('jsdom-global')();
 let $ = require('jquery');
 let expect = require('chai').expect;
 let sharedObject = require('./script').sharedObject;
-document.body.innerHTML =
-    `<body>
+document.body.innerHTML =`<body>
     <div id="wrapper">
         <input type="text" id="name">
         <input type="text" id="income">
     </div>
-</body>`
+</body>`;
 
 describe('Shared Object Tests', function () {
 
-    describe('test init name and income prop for null',()=>{
+    describe('test init name and income prop for null', () => {
         it('test name for null ', function () {
             expect(sharedObject.name).to.equal(null)
         });
@@ -20,7 +19,7 @@ describe('Shared Object Tests', function () {
             expect(sharedObject.income).to.equal(null)
         });
     })
-    describe('test changeName() func',()=>{
+    describe('test changeName() func', () => {
         it('changeName() should not change name.prop on empty string', function () {
             sharedObject.changeName('')
             expect(sharedObject.name).to.equal(null)
@@ -37,7 +36,7 @@ describe('Shared Object Tests', function () {
             sharedObject['name'] = null;
         });
     })
-    describe('test changeIncome() func',()=>{
+    describe('test changeIncome() func', () => {
 
         it('changeIncome() should not change income.prop on passing a negative int', function () {
             sharedObject.changeIncome(-1)
@@ -64,7 +63,7 @@ describe('Shared Object Tests', function () {
             $('#income').val(null)
         });
     })
-    describe('test updateName() func',()=>{
+    describe('test updateName() func', () => {
         it('updateName() should not change name.prop on passing a empty string', function () {
             $('#name').val('')
             sharedObject.updateName()
@@ -78,7 +77,7 @@ describe('Shared Object Tests', function () {
         });
 
     })
-    describe('test updateIncome() func',()=>{
+    describe('test updateIncome() func', () => {
         it('updateIncome() should not change income.prop on passing a negative int', function () {
             sharedObject.updateIncome(-1)
             expect(sharedObject.income).to.equal(null)
