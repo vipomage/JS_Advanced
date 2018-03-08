@@ -34,6 +34,7 @@ describe('Shared Object Tests', function () {
             sharedObject.changeName('String');
             let nameField = $('#name')
             expect(nameField.val()).to.be.equal('String');
+            sharedObject['name'] = null;
         });
     })
     describe('test changeIncome() func',()=>{
@@ -59,6 +60,8 @@ describe('Shared Object Tests', function () {
             sharedObject.changeIncome(20);
             let incomeField = $('#income')
             expect(incomeField.val()).to.be.equal('20');
+            sharedObject['income'] = null;
+            $('#income').val(null)
         });
     })
     describe('test updateName() func',()=>{
