@@ -1,0 +1,26 @@
+{
+  "Incorrect first Arg",
+  "Incorrect second Arg",
+  "Incorrect both args",
+  "Incorrect type of 1st arg",
+  "Incorrect type of 2nd arg",
+  'negative numbers as args'
+  'negative ints for calcs'
+  'floating points for both args'
+  'negative floating points'
+  
+  "arrays":{
+		"lesser index than lenght",
+		"bigger index than length",
+		"last and first index",
+		"type is not array",
+  }
+  'objects':{
+  		"lesser index than lenght",
+		"bigger index than length",
+		"last and first index",
+		"type is not obj",
+		'doesn't contain property'
+  }
+  
+}
