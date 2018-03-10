@@ -32,13 +32,5 @@ function personAndTeacher() {
     }
     return {Person,Teacher,Student}
 }
-let result = personAndTeacher();
-let classes = result;
-let Person = classes.Person;
-let Teacher = classes.Teacher;
-let Student = classes.Student;
-
-let t = new Teacher("Gosho",'gosh@gosh.com',"Graphics");
-let s = new Student("Stamat",'stamcho@stamishteto.bg',666);
-console.log(t.toString());
-console.log(s.toString());
+let p = personAndTeacher();
+module.exports = p.Person;
