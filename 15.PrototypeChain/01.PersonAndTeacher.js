@@ -14,10 +14,9 @@ function personAndTeacher() {
             this.subject = subject;
         }
         toString(){
-            return `Teacher (name: ${this.name}, email:${this.email}, subject:${this.subject})`
+            return `Teacher (name: ${this.name}, email: ${this.email}, subject: ${this.subject})`
         }
     }
-
     return {Person,Teacher}
 }
 
