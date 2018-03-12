@@ -1,4 +1,3 @@
-
 let Extensible = (()=> {
     let id = 0;
     class Extensible {
@@ -15,16 +14,13 @@ let Extensible = (()=> {
                 }
             }
         }
-
     }
 
     return Extensible;
 })();
 
 let template = {
-    extensionMethod: function () {
-
-    },
+    extensionMethod: function () {},
     extensionProperty:'someString'
 }
 
