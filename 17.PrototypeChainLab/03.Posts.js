@@ -24,7 +24,6 @@ function solve() {
 
         toString() {
             if (this.comments.length > 0) {
-                let test = `Post: ${this.title}\nContent: ${this.content}\nRating: ${this.likes - this.dislikes}\nComments: \n${this.comments.join('\n')}`;
                 return `Post: ${this.title}\nContent: ${this.content}\nRating: ${this.likes - this.dislikes}\nComments:\n${this.comments.join('\n')}`
             } else {
                 return `Post: ${this.title}\nContent: ${this.content}\nRating: ${this.likes - this.dislikes}`
