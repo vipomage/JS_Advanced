@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head><title>Select and Print</title>
+    <style>
+        select {
+            width: 100px
+            }
+
+        .block {
+            display: inline-block;
+            vertical-align: top;
+            text-align: center
+            }
+
+        button {
+            width: 60px
+            }
+
+        #btnRight {
+            display: block;
+            margin-top: 20px
+            }
+
+        #btnLeft {
+            display: block;
+            margin-top: 5px
+            }
+
+        #btnPrint {
+            display: block;
+            margin-top: 5px
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div class="block">
+    <div>Available towns</div>
+    <select id="available-towns" size="5">
+        <option>Sofia</option>
+        <option>Varna</option>
+        <option>Pleven</option>
+    </select></div>
+<div class="block">
+    <button id="btnRight" onclick="move('right')">&rightarrow;</button>
+    <button id="btnLeft" onclick="move('left')">&leftarrow;</button>
+    <button id="btnPrint" onclick="move('print')">Print</button>
+</div>
+<div class="block">
+    <div>Selected towns</div>
+    <select id="selected-towns" size="5">
+        <option>Plovdiv</option>
+        <option>Ruse</option>
+    </select></div>
+<div id="output"></div>
+<script.>
+    function move(command) {
+        let clickedButton = command
+        let selectedItem;
+        let selectedLeft = $('#available-towns option:selected').val();
+        let selectedRight = $('#selected-towns option:selected').val();
+        let availableTowns = $('#available-towns');
+        let selectedTowns = $('#selected-towns');
+
+        if (clickedButton === 'right' && selectedLeft !== undefined) {
+            selectedItem = $('#available-towns option:selected').val();
+            console.log(selectedItem);
+            selectedTowns.append(`<option>${selectedItem}</option>`)
+            $('#available-towns option:selected').remove();
+        }
+        else if (clickedButton === 'left' && selectedRight !== undefined) {
+            selectedItem = $('#selected-towns option:selected').val();
+            console.log(selectedItem);
+            availableTowns.append(`<option>${selectedItem}</option>`)
+            $('#selected-towns option:selected').remove();
+        }
+        else if (clickedButton === 'print') {
+            selectedTowns = $('#selected-towns option');
+            $('div#output').replaceWith('<div id="output"></div>')
+            for (let i = 0; i < selectedTowns.length; i++) {
+                if (i === selectedTowns.length - 1) {
+                    $('div#output').append(selectedTowns[i].innerText)
+                } else {
+                    $('div#output').append(selectedTowns[i].innerText + '; ')
+                }
+            }
+        }
+    }
+</script.>
+</body>
+</html>
