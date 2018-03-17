@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cards</title>
+    <style>
+        div.card {
+            display: inline-block; padding: 10px; margin: 10px;
+            width: 50px; height: 80px; background: #EEE;
+            border: 3px solid #DDD; border-radius: 5px;
+            font-size: 18pt; text-align: center; line-height: 75px;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+
+</div>
+<script>
+    function cardDeckBuilder(selector) {
+        let Suits = {
+            C: "\u2663",   // ♣
+            D: "\u2666",   // ♦
+            H: "\u2665",   // ♥
+            S: "\u2660"    // ♠
+        };
+        let Faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+        class Card {
+            constructor(face, suit) {
+                this.suit = suit;
+                this.face = face;
+            }
+
+            get suit() {
+                return this._suit;
+            }
+
+            set suit(value) {
+
+                if (!Object.keys(Suits).map(shade =>shade === value)) {
+                    throw new Error(`Invalid card suite: ${value}`)
+                }
+                this._suit = Suits[value];
+            }
+
+            get face() {
+                return this._face;
+            }
+
+            set face(value) {
+                if (!Faces.includes(value)) {
+                    throw new Error(`Invalid card face: ${value}`)
+                }
+                this._face = value;
+            }
+
+            toString(){return this.face+this.suit}
+
+        }
+
+        function addCard(face,suit){
+            let myCard = new Card(face,suit);
+            $(selector).append($(`<div class="card">${myCard.toString()}</div>`).click(()=>{
+                let cards = document.querySelectorAll('.card');
+                let allCards = $(selector + " .card").toArray();
+                allCards.reverse()
+                $(selector).append(allCards)
+            }))
+        }
+        return {addCard};
+    }
+</script>
+<script>
+    $(function() {
+        let builder = cardDeckBuilder("#main");
+        builder.addCard("10", "D");
+        builder.addCard("K", "S");
+        builder.addCard("Q", "H");
+        builder.addCard("4", "C");
+    });
+</script>
+</body>
+</html>
