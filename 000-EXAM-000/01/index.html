@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Bill</title>
+    <style>
+        body {
+            padding: 30px;
+            }
+
+        table, section {
+            border: 1px solid black;
+            border-collapse: collapse;
+            }
+
+        th, td {
+            padding: 5px 20px;
+            }
+
+        th, tfoot td {
+            background: #CCCCCC;
+            }
+
+        tr:nth-child(odd) {
+            background: #EEEEEE;
+            }
+
+        tr:nth-child(even) {
+            background: #DDDDDD;
+            }
+
+        tfoot > tr td {
+            font-style: italic;
+            font-weight: bold;
+            }
+
+        section {
+            margin-top: 10px;
+            width: 177px;
+            background: #CCCCCC;
+            }
+
+        section > * {
+            display: block;
+            padding: 5px;
+            }
+
+        h3 {
+            margin: 0;
+            text-align: center;
+            }
+
+        button {
+            margin: 5px auto;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h2>Restaurant Bill</h2>
+<table id="bill">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="product-list"></tbody>
+    <tfoot>
+    <tr>
+        <td>Total:</td>
+        <td>0.00</td>
+    </tr>
+    </tfoot>
+</table>
+<section id="add-product">a
+    <h3>Add new product</h3>
+    <label>Product:
+        <input type="text">
+    </label>
+    <label>Price:
+        <input type="number">
+    </label>
+    <button onclick="addProduct()">Add</button>
+</section>
+<script>
+    function addProduct() {
+        let sum = 0;
+        let value = $('input[type="text"]')
+        let price = $('input[type="number"]')
+        if (price.val() !== '' && value.val() !== '') {
+            let container = $('tbody#product-list')
+            let row = `<tr><td>${value.val()}</td><td>${price.val()}</td></tr>`
+            sum += Number(price.val());
+            container.append(row);
+            let total = $('#bill > tfoot > tr > td:nth-child(2)')[0];
+            if (total.textContent === '0.00') {
+                total.textContent = 0
+            }
+            total.textContent = (Number(total.textContent) + sum)
+            $('input[type="text"]').val('');
+            $('input[type="number"]').val('');
+        }
+        //.toFixed(2)
+    }
+</script>
+</body>
+</html>
